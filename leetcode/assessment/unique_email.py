@@ -1,17 +1,19 @@
 from typing import List
-import re
+
 
 class UniqueEmail:
-    def handleDot(self, email: str) -> str:
+    @staticmethod
+    def handleDot(email: str) -> str:
         indexAt = email.index("@")
         beforeAt = email[:indexAt]
         afterAt = email[indexAt:]
         return beforeAt.replace(".", "") + afterAt
 
-    def handleFirstPlus(self, email: str) -> str:
+    @staticmethod
+    def handleFirstPlus(email: str) -> str:
         try:
             plusIndex = email.index("+")
-        except ValueError as ve:
+        except ValueError:
             return email
         indexAt = email.index("@")
         beforeAt = email[:indexAt]
